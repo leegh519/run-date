@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "80268398819",
+    "project_id": "run-date",
+    "storage_bucket": "run-date.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80268398819:android:280ae5d34a1ec8c8b4b5d6",
+        "android_client_info": {
+          "package_name": "com.chbb.rundate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRHy8tQSt7i7FIjDZIWXPnsrDndF90tyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
