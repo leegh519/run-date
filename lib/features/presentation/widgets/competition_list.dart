@@ -5,6 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rundate/core/utils/datetime_util.dart';
 import 'package:rundate/core/utils/size_util.dart';
 import 'package:rundate/features/presentation/providers/competition_provider.dart';
+// ignore: depend_on_referenced_packages
+import 'package:collection/collection.dart';
 
 class CompetitionList extends ConsumerWidget {
   const CompetitionList({
@@ -39,47 +41,160 @@ class CompetitionList extends ConsumerWidget {
                       color: Colors.black.withOpacity(0.03),
                       blurRadius: 1.size,
                     ),
+                    BoxShadow(
+                      offset: const Offset(-1, 0),
+                      color: Colors.black.withOpacity(0.03),
+                      blurRadius: 1.size,
+                    ),
                   ],
                 ),
-                height: 150.size,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    if (DateTime.now().isAfter(competition.startDate) &&
+                        DateTime.now().isBefore(
+                            competition.endDate.add(const Duration(days: 1))))
+                      Row(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 1.size,
+                              horizontal: 4.size,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.red[300],
+                              borderRadius: BorderRadius.circular(10.size),
+                            ),
+                            child: Text(
+                              '접수중',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 13.size,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    SizedBox(
+                      height: 3.size,
+                    ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          '🏃🏼‍♂️${competition.title}',
-                          style: TextStyle(
-                            fontSize: 18.size,
-                            fontWeight: FontWeight.w500,
+                        Flexible(
+                          child: Text(
+                            '🏃🏼‍♂️${competition.title}',
+                            style: TextStyle(
+                              fontSize: 18.size,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
-                        const Spacer(),
                         const Icon(
                           Icons.favorite_border,
                         ),
                       ],
                     ),
-                    Row(
-                      children: [
-                        Text(competition.place),
-                      ],
+                    SizedBox(
+                      height: 3.size,
                     ),
                     Row(
                       children: [
-                        Text(competition.date.monthDayFormat),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          '접수: ${competition.startDate.koreanFormat} ~ ${competition.endDate.koreanFormat}',
+                        Icon(
+                          Icons.calendar_month_outlined,
+                          size: 20.size,
+                          color: Colors.grey[600],
+                        ),
+                        SizedBox(
+                          width: 5.size,
+                        ),
+                        Flexible(
+                          child: FittedBox(
+                            child: Text(
+                              competition.date.monthDayFormat,
+                              style: TextStyle(
+                                fontSize: 16.size,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
                         ),
                       ],
                     ),
+                    SizedBox(
+                      height: 2.size,
+                    ),
                     Row(
-                      children:
-                          competition.eventList.map((e) => Text(e)).toList(),
+                      children: [
+                        Icon(
+                          Icons.location_on_sharp,
+                          size: 20.size,
+                          color: Colors.grey[600],
+                        ),
+                        SizedBox(
+                          width: 5.size,
+                        ),
+                        Flexible(
+                          child: FittedBox(
+                            child: Text(
+                                '${competition.region}-${competition.place}'),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 2.size,
+                    ),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.description_outlined,
+                          size: 20.size,
+                          color: Colors.grey[600],
+                        ),
+                        SizedBox(
+                          width: 5.size,
+                        ),
+                        Flexible(
+                          child: FittedBox(
+                            child: Text(
+                              '접수: ${competition.startDate.koreanFormat} ~ ${competition.endDate.koreanFormat}',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 8.size,
+                    ),
+                    Wrap(
+                      children: competition.eventList
+                          .mapIndexed(
+                            (i, e) => Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: i != 0 ? 2.size : 0,
+                              ),
+                              child: Container(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: 1.size,
+                                  horizontal: 4.size,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.green[600],
+                                  borderRadius: BorderRadius.circular(10.size),
+                                ),
+                                child: Text(
+                                  e,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 13.size,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                          .toList(),
                     ),
                   ],
                 ),

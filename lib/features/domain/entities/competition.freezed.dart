@@ -31,6 +31,7 @@ mixin _$Competition {
   String? get url => throw _privateConstructorUsedError;
   bool get major => throw _privateConstructorUsedError;
   String get event => throw _privateConstructorUsedError;
+  String get region => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +54,8 @@ abstract class $CompetitionCopyWith<$Res> {
       @JsonKey(name: 'end_date') DateTime endDate,
       String? url,
       bool major,
-      String event});
+      String event,
+      String region});
 }
 
 /// @nodoc
@@ -78,6 +80,7 @@ class _$CompetitionCopyWithImpl<$Res, $Val extends Competition>
     Object? url = freezed,
     Object? major = null,
     Object? event = null,
+    Object? region = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -116,6 +119,10 @@ class _$CompetitionCopyWithImpl<$Res, $Val extends Competition>
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
               as String,
+      region: null == region
+          ? _value.region
+          : region // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -137,7 +144,8 @@ abstract class _$$CompetitionImplCopyWith<$Res>
       @JsonKey(name: 'end_date') DateTime endDate,
       String? url,
       bool major,
-      String event});
+      String event,
+      String region});
 }
 
 /// @nodoc
@@ -160,6 +168,7 @@ class __$$CompetitionImplCopyWithImpl<$Res>
     Object? url = freezed,
     Object? major = null,
     Object? event = null,
+    Object? region = null,
   }) {
     return _then(_$CompetitionImpl(
       id: null == id
@@ -198,6 +207,10 @@ class __$$CompetitionImplCopyWithImpl<$Res>
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
               as String,
+      region: null == region
+          ? _value.region
+          : region // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -214,7 +227,8 @@ class _$CompetitionImpl extends _Competition {
       @JsonKey(name: 'end_date') required this.endDate,
       required this.url,
       required this.major,
-      required this.event})
+      required this.event,
+      required this.region})
       : super._();
 
   factory _$CompetitionImpl.fromJson(Map<String, dynamic> json) =>
@@ -240,10 +254,12 @@ class _$CompetitionImpl extends _Competition {
   final bool major;
   @override
   final String event;
+  @override
+  final String region;
 
   @override
   String toString() {
-    return 'Competition(id: $id, title: $title, place: $place, date: $date, startDate: $startDate, endDate: $endDate, url: $url, major: $major, event: $event)';
+    return 'Competition(id: $id, title: $title, place: $place, date: $date, startDate: $startDate, endDate: $endDate, url: $url, major: $major, event: $event, region: $region)';
   }
 
   @override
@@ -260,13 +276,14 @@ class _$CompetitionImpl extends _Competition {
             (identical(other.endDate, endDate) || other.endDate == endDate) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.major, major) || other.major == major) &&
-            (identical(other.event, event) || other.event == event));
+            (identical(other.event, event) || other.event == event) &&
+            (identical(other.region, region) || other.region == region));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, title, place, date,
-      startDate, endDate, url, major, event);
+      startDate, endDate, url, major, event, region);
 
   @JsonKey(ignore: true)
   @override
@@ -292,7 +309,8 @@ abstract class _Competition extends Competition {
       @JsonKey(name: 'end_date') required final DateTime endDate,
       required final String? url,
       required final bool major,
-      required final String event}) = _$CompetitionImpl;
+      required final String event,
+      required final String region}) = _$CompetitionImpl;
   const _Competition._() : super._();
 
   factory _Competition.fromJson(Map<String, dynamic> json) =
@@ -318,6 +336,8 @@ abstract class _Competition extends Competition {
   bool get major;
   @override
   String get event;
+  @override
+  String get region;
   @override
   @JsonKey(ignore: true)
   _$$CompetitionImplCopyWith<_$CompetitionImpl> get copyWith =>

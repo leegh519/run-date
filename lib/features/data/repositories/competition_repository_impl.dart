@@ -13,7 +13,10 @@ CompetitionRepository competitionRepository(CompetitionRepositoryRef ref) {
 class CompetitionRepositoryImpl implements CompetitionRepository {
   @override
   Future<List<Competition>> getCompetitions() async {
-    final list = await Supabase.instance.client.from('competitions').select();
+    final list = await Supabase.instance.client
+        .from('competitions')
+        .select()
+        .order('date', ascending: true);
     print(list);
     return list.map((e) => Competition.fromJson(e)).toList();
   }

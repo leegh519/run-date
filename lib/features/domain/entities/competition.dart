@@ -17,6 +17,7 @@ class Competition with _$Competition {
     required String? url,
     required bool major,
     required String event,
+    required String region,
   }) = _Competition;
 
   List<String> get eventList {

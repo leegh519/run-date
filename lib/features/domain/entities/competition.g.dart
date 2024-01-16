@@ -17,6 +17,7 @@ _$CompetitionImpl _$$CompetitionImplFromJson(Map<String, dynamic> json) =>
       url: json['url'] as String?,
       major: json['major'] as bool,
       event: json['event'] as String,
+      region: json['region'] as String,
     );
 
 Map<String, dynamic> _$$CompetitionImplToJson(_$CompetitionImpl instance) =>
@@ -30,4 +31,5 @@ Map<String, dynamic> _$$CompetitionImplToJson(_$CompetitionImpl instance) =>
       'url': instance.url,
       'major': instance.major,
       'event': instance.event,
+      'region': instance.region,
     };
