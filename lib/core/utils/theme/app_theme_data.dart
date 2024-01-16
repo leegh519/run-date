@@ -11,10 +11,15 @@ class AppThemeData {
     ),
     colorScheme: ColorScheme.fromSeed(
       seedColor: mainColor,
+      background: Colors.white,
+      onBackground: Colors.white,
     ),
     fontFamily: 'Pretendard',
     scaffoldBackgroundColor: Colors.white,
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: Colors.white,
+    ),
   );
 
-  static const mainColor = Color.fromRGBO(245, 255, 250, 1);
+  static const mainColor = Color.fromRGBO(67, 160, 71, 1);
 }
