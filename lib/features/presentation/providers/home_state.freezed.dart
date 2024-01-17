@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HomeState {
   List<Competition> get competitions => throw _privateConstructorUsedError;
   List<Competition> get allCompetitions => throw _privateConstructorUsedError;
+  List<int> get notificationList => throw _privateConstructorUsedError;
   SelectedFilter get selectedFilter => throw _privateConstructorUsedError;
   DataState get status => throw _privateConstructorUsedError;
 
@@ -34,6 +35,7 @@ abstract class $HomeStateCopyWith<$Res> {
   $Res call(
       {List<Competition> competitions,
       List<Competition> allCompetitions,
+      List<int> notificationList,
       SelectedFilter selectedFilter,
       DataState status});
 
@@ -56,6 +58,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   $Res call({
     Object? competitions = null,
     Object? allCompetitions = null,
+    Object? notificationList = null,
     Object? selectedFilter = null,
     Object? status = null,
   }) {
@@ -68,6 +71,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.allCompetitions
           : allCompetitions // ignore: cast_nullable_to_non_nullable
               as List<Competition>,
+      notificationList: null == notificationList
+          ? _value.notificationList
+          : notificationList // ignore: cast_nullable_to_non_nullable
+              as List<int>,
       selectedFilter: null == selectedFilter
           ? _value.selectedFilter
           : selectedFilter // ignore: cast_nullable_to_non_nullable
@@ -107,6 +114,7 @@ abstract class _$$HomeStateImplCopyWith<$Res>
   $Res call(
       {List<Competition> competitions,
       List<Competition> allCompetitions,
+      List<int> notificationList,
       SelectedFilter selectedFilter,
       DataState status});
 
@@ -129,6 +137,7 @@ class __$$HomeStateImplCopyWithImpl<$Res>
   $Res call({
     Object? competitions = null,
     Object? allCompetitions = null,
+    Object? notificationList = null,
     Object? selectedFilter = null,
     Object? status = null,
   }) {
@@ -141,6 +150,10 @@ class __$$HomeStateImplCopyWithImpl<$Res>
           ? _value._allCompetitions
           : allCompetitions // ignore: cast_nullable_to_non_nullable
               as List<Competition>,
+      notificationList: null == notificationList
+          ? _value._notificationList
+          : notificationList // ignore: cast_nullable_to_non_nullable
+              as List<int>,
       selectedFilter: null == selectedFilter
           ? _value.selectedFilter
           : selectedFilter // ignore: cast_nullable_to_non_nullable
@@ -159,10 +172,12 @@ class _$HomeStateImpl implements _HomeState {
   const _$HomeStateImpl(
       {final List<Competition> competitions = const [],
       final List<Competition> allCompetitions = const [],
+      final List<int> notificationList = const [],
       this.selectedFilter = const SelectedFilter(),
       this.status = const DataState.loading()})
       : _competitions = competitions,
-        _allCompetitions = allCompetitions;
+        _allCompetitions = allCompetitions,
+        _notificationList = notificationList;
 
   final List<Competition> _competitions;
   @override
@@ -182,6 +197,16 @@ class _$HomeStateImpl implements _HomeState {
     return EqualUnmodifiableListView(_allCompetitions);
   }
 
+  final List<int> _notificationList;
+  @override
+  @JsonKey()
+  List<int> get notificationList {
+    if (_notificationList is EqualUnmodifiableListView)
+      return _notificationList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_notificationList);
+  }
+
   @override
   @JsonKey()
   final SelectedFilter selectedFilter;
@@ -191,7 +216,7 @@ class _$HomeStateImpl implements _HomeState {
 
   @override
   String toString() {
-    return 'HomeState(competitions: $competitions, allCompetitions: $allCompetitions, selectedFilter: $selectedFilter, status: $status)';
+    return 'HomeState(competitions: $competitions, allCompetitions: $allCompetitions, notificationList: $notificationList, selectedFilter: $selectedFilter, status: $status)';
   }
 
   @override
@@ -203,6 +228,8 @@ class _$HomeStateImpl implements _HomeState {
                 .equals(other._competitions, _competitions) &&
             const DeepCollectionEquality()
                 .equals(other._allCompetitions, _allCompetitions) &&
+            const DeepCollectionEquality()
+                .equals(other._notificationList, _notificationList) &&
             (identical(other.selectedFilter, selectedFilter) ||
                 other.selectedFilter == selectedFilter) &&
             (identical(other.status, status) || other.status == status));
@@ -213,6 +240,7 @@ class _$HomeStateImpl implements _HomeState {
       runtimeType,
       const DeepCollectionEquality().hash(_competitions),
       const DeepCollectionEquality().hash(_allCompetitions),
+      const DeepCollectionEquality().hash(_notificationList),
       selectedFilter,
       status);
 
@@ -227,6 +255,7 @@ abstract class _HomeState implements HomeState {
   const factory _HomeState(
       {final List<Competition> competitions,
       final List<Competition> allCompetitions,
+      final List<int> notificationList,
       final SelectedFilter selectedFilter,
       final DataState status}) = _$HomeStateImpl;
 
@@ -234,6 +263,8 @@ abstract class _HomeState implements HomeState {
   List<Competition> get competitions;
   @override
   List<Competition> get allCompetitions;
+  @override
+  List<int> get notificationList;
   @override
   SelectedFilter get selectedFilter;
   @override

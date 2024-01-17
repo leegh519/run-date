@@ -10,6 +10,7 @@ class HomeState with _$HomeState {
   const factory HomeState({
     @Default([]) List<Competition> competitions,
     @Default([]) List<Competition> allCompetitions,
+    @Default([]) List<int> notificationList,
     @Default(SelectedFilter()) SelectedFilter selectedFilter,
     @Default(DataState.loading()) DataState status,
   }) = _HomeState;

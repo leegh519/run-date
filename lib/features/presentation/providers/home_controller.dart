@@ -1,8 +1,12 @@
 import 'dart:developer';
 
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:rundate/core/configs/firebase/fcm_setting.dart';
+import 'package:rundate/features/domain/entities/competition.dart';
 import 'package:rundate/features/domain/entities/enums/filter.dart';
 import 'package:rundate/features/domain/entities/selected_filter.dart';
+import 'package:rundate/features/domain/usecases/competition_notification.dart';
 import 'package:rundate/features/domain/usecases/get_competition.dart';
 import 'package:rundate/features/presentation/providers/data_state.dart';
 import 'package:rundate/features/presentation/providers/home_state.dart';
@@ -18,6 +22,7 @@ class HomeController extends _$HomeController {
         month: ['${DateTime.now().month}월'],
       ),
     );
+    _getNotificationList();
     _getData();
     return state;
   }
@@ -102,5 +107,22 @@ class HomeController extends _$HomeController {
       ),
     );
     _filterData();
+  }
+
+  void addNotification(Competition competition) async {
+    await ref.read(competitionNotiticationsProvider).add(competition);
+    _getNotificationList();
+  }
+
+  void deleteNotification(int id) async {
+    await ref.read(competitionNotiticationsProvider).delete(id);
+    _getNotificationList();
+  }
+
+  void _getNotificationList() async {
+    final list = await ref.read(competitionNotiticationsProvider).getAll();
+    state = state.copyWith(
+      notificationList: list,
+    );
   }
 }

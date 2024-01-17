@@ -1,10 +1,13 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:rundate/core/utils/theme/app_theme_data.dart';
 
 class FcmSetting {
   static final FcmSetting instance = FcmSetting._internal();
+
+  FcmSetting.initialize() {
+    FcmSetting._internal();
+  }
 
   FcmSetting._internal() {
     registerNotification();
@@ -94,10 +97,10 @@ class FcmSetting {
       channelDescription: '런데이트 알림',
       playSound: true,
       enableVibration: true,
-      icon: null,
+      icon: '@drawable/ic_stat_name',
       importance: Importance.max,
       priority: Priority.high,
-      color: AppThemeData.mainColor,
+      color: Colors.black,
     ),
     iOS: DarwinNotificationDetails(),
   );

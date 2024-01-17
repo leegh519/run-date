@@ -3,6 +3,7 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:rundate/core/configs/firebase/fcm_setting.dart';
 import 'package:rundate/core/configs/firebase/firebase_options.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rundate/core/configs/routes/go_router.dart';
@@ -10,6 +11,8 @@ import 'package:rundate/core/utils/size_util.dart';
 import 'package:rundate/core/utils/theme/app_theme_data.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:timezone/data/latest_all.dart' as tzl;
+import 'package:timezone/timezone.dart' as tz;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,9 +24,13 @@ Future<void> main() async {
 
   await dotenv.load(fileName: '.env');
 
+  tzl.initializeTimeZones();
+  tz.setLocalLocation(tz.getLocation('Asia/Seoul'));
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  FcmSetting.initialize();
 
   await Supabase.initialize(
     url: dotenv.get('url'),
