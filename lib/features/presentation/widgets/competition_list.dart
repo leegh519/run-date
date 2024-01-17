@@ -29,6 +29,7 @@ class CompetitionList extends ConsumerWidget {
                   left: 20.size,
                   right: 20.size,
                   top: index == 0 ? 15.size : 0,
+                  bottom: index == state.competitions.length - 1 ? 15.size : 0,
                 ),
                 child: CompetitionCard(competition: competition),
               );
