@@ -1,17 +1,17 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'competition_provider.dart';
+part of 'home_controller.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$homeControllerHash() => r'e90efaa71359d856f88bdbca3fd4c5c032e8ce73';
+String _$homeControllerHash() => r'4750e1749fe034b44a33591ea3f0d9b612d11ad0';
 
 /// See also [HomeController].
 @ProviderFor(HomeController)
-final homeControllerProvider = AutoDisposeAsyncNotifierProvider<HomeController,
-    List<Competition>>.internal(
+final homeControllerProvider =
+    AutoDisposeNotifierProvider<HomeController, HomeState>.internal(
   HomeController.new,
   name: r'homeControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -21,6 +21,6 @@ final homeControllerProvider = AutoDisposeAsyncNotifierProvider<HomeController,
   allTransitiveDependencies: null,
 );
 
-typedef _$HomeController = AutoDisposeAsyncNotifier<List<Competition>>;
+typedef _$HomeController = AutoDisposeNotifier<HomeState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
