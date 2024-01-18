@@ -11,7 +11,7 @@ import 'package:rundate/core/utils/size_util.dart';
 import 'package:rundate/core/utils/theme/app_theme_data.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:timezone/data/latest_all.dart' as tzl;
+import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
 Future<void> main() async {
@@ -24,7 +24,7 @@ Future<void> main() async {
 
   await dotenv.load(fileName: '.env');
 
-  tzl.initializeTimeZones();
+  tz.initializeTimeZones();
   tz.setLocalLocation(tz.getLocation('Asia/Seoul'));
 
   await Firebase.initializeApp(
