@@ -3,6 +3,7 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:rundate/core/configs/firebase/fcm_setting.dart';
 import 'package:rundate/core/configs/firebase/firebase_options.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,12 +16,13 @@ import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   await dotenv.load(fileName: '.env');
 

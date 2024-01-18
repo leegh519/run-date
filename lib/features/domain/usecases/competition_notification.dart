@@ -31,14 +31,20 @@ class CompetitionNotitications {
         reception,
         '대회 접수 알림',
         '${competition.title} 접수일입니다.',
-        tz.TZDateTime(
-          tz.getLocation('Asia/Seoul'),
+        tz.TZDateTime.local(
           competition.startDate.year,
           competition.startDate.month,
           competition.startDate.day,
           8,
         ),
-        // tz.TZDateTime.now(tz.local).add(Duration(seconds: 2)),
+        // tz.TZDateTime.local(
+        //   2024,
+        //   1,
+        //   18,
+        //   11,
+        //   31,
+        // ),
+        // tz.TZDateTime.now(tz.local).add(Duration(minutes: 2)),
         FcmSetting.instance.platformChannelSpecifics,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
@@ -54,14 +60,20 @@ class CompetitionNotitications {
         competitionId,
         '대회 알림',
         '${competition.title} D-1',
-        tz.TZDateTime(
-          tz.getLocation('Asia/Seoul'),
+        tz.TZDateTime.local(
           competition.date.year,
           competition.date.month,
           competition.date.day - 1,
           8,
         ),
-        // tz.TZDateTime.now(tz.local).add(Duration(seconds: 3)),
+        // tz.TZDateTime.local(
+        //   2024,
+        //   1,
+        //   18,
+        //   11,
+        //   30,
+        // ),
+        // tz.TZDateTime.now(tz.local).add(Duration(minutes: 3)),
         FcmSetting.instance.platformChannelSpecifics,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,

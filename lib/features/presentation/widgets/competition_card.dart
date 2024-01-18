@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:rundate/core/utils/datetime_util.dart';
 import 'package:rundate/core/utils/size_util.dart';
 import 'package:rundate/core/utils/theme/app_theme_data.dart';
@@ -100,6 +101,10 @@ class CompetitionCard extends ConsumerWidget {
                           ref
                               .read(homeControllerProvider.notifier)
                               .addNotification(competition);
+                          Fluttertoast.showToast(
+                            msg: '대회 알림이 설정되었습니다',
+                            fontSize: 14.size,
+                          );
                         } else {
                           ref
                               .read(homeControllerProvider.notifier)
