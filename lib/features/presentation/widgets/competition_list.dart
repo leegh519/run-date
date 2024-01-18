@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rundate/core/utils/size_util.dart';
 import 'package:rundate/features/presentation/providers/data_state.dart';
 import 'package:rundate/features/presentation/providers/home_controller.dart';
 import 'package:rundate/features/presentation/widgets/competition_card.dart';
-import 'package:flutter/material.dart';
 
 class CompetitionList extends ConsumerWidget {
   const CompetitionList({
