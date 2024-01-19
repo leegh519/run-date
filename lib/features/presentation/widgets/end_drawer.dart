@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rundate/core/utils/size_util.dart';
@@ -52,24 +54,25 @@ class EndDrawer extends StatelessWidget {
                   ),
                 ),
               ),
-              InkWell(
-                onTap: () {
-                  launchUrl(
-                    Uri.parse('https://toss.me/jejst/1000'),
-                    mode: LaunchMode.externalApplication,
-                  );
-                },
-                child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 10.size),
-                  child: Text(
-                    '후원하기',
-                    style: TextStyle(
-                      fontSize: 16.size,
-                      fontWeight: FontWeight.w500,
+              if (Platform.isAndroid)
+                InkWell(
+                  onTap: () {
+                    launchUrl(
+                      Uri.parse('https://toss.me/레이스캘린더/1000'),
+                      mode: LaunchMode.externalApplication,
+                    );
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 10.size),
+                    child: Text(
+                      '후원하기',
+                      style: TextStyle(
+                        fontSize: 16.size,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 ),
-              ),
             ],
           ),
         ),
