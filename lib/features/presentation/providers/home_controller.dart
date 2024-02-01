@@ -48,6 +48,7 @@ class HomeController extends _$HomeController {
   Future<void> _filterData() async {
     final month = state.selectedFilter.month;
     final event = state.selectedFilter.event;
+    final region = state.selectedFilter.region;
     // final notificationOnOff = state.selectedFilter.notificationOnOff;
     final reception = state.selectedFilter.reception;
     final competitions = [...state.allCompetitions];
@@ -56,6 +57,11 @@ class HomeController extends _$HomeController {
     if (month.isNotEmpty) {
       competitions.removeWhere(
           (competition) => !month.contains('${competition.date.month}월'));
+    }
+    // 지역 필터링
+    if (region.isNotEmpty) {
+      competitions
+          .removeWhere((competition) => !region.contains(competition.region));
     }
     // 종목 필터링
     if (event.isNotEmpty) {
@@ -92,6 +98,8 @@ class HomeController extends _$HomeController {
   void deleteFilter(String filter) {
     final event = List<String>.from(state.selectedFilter.event)..remove(filter);
     final month = List<String>.from(state.selectedFilter.month)..remove(filter);
+    final region = List<String>.from(state.selectedFilter.region)
+      ..remove(filter);
     // final notificationOnOff =
     //     List<String>.from(state.selectedFilter.notificationOnOff)
     //       ..remove(filter);
@@ -102,6 +110,7 @@ class HomeController extends _$HomeController {
       selectedFilter: SelectedFilter(
         event: event,
         month: month,
+        region: region,
         // notificationOnOff: notificationOnOff,
         reception: reception,
       ),

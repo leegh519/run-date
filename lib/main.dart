@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:rundate/core/configs/firebase/fcm_setting.dart';
 import 'package:rundate/core/configs/firebase/firebase_options.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -71,6 +72,7 @@ class RunDate extends ConsumerWidget {
       theme: AppThemeData.theme,
       routerConfig: router,
       builder: (context, child) {
+        initializeDateFormatting(Localizations.localeOf(context).languageCode);
         SizeUtil.getMediaSize(context);
         return child!;
       },

@@ -10,6 +10,7 @@ class SelectedFilter with _$SelectedFilter {
     @Default([]) List<String> month,
     @Default([]) List<String> reception,
     @Default([]) List<String> event,
+    @Default([]) List<String> region,
     // @Default([]) List<String> notificationOnOff,
   }) = _SelectedFilter;
 
@@ -17,6 +18,7 @@ class SelectedFilter with _$SelectedFilter {
         ...month,
         ...reception,
         ...event,
+        ...region,
         // ...notificationOnOff,
       ];
 }

@@ -80,6 +80,34 @@ class CompetitionNotitications {
         androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       );
     }
+    int competitionDay = await localDatabase.createCompetitionNoti(
+      CompetitionNotiCompanion(competitionId: Value(competition.id)),
+    );
+    if (competition.date.isAfter(now)) {
+      FcmSetting.instance.flutterLocalNotificationsPlugin.zonedSchedule(
+        competitionDay,
+        '대회 알림',
+        '러너님의 대회를 응원합니다! ${competition.title} D-Day',
+        tz.TZDateTime.local(
+          competition.date.year,
+          competition.date.month,
+          competition.date.day - 1,
+          7,
+        ),
+        // tz.TZDateTime.local(
+        //   2024,
+        //   1,
+        //   18,
+        //   11,
+        //   30,
+        // ),
+        // tz.TZDateTime.now(tz.local).add(Duration(minutes: 3)),
+        FcmSetting.instance.platformChannelSpecifics,
+        uiLocalNotificationDateInterpretation:
+            UILocalNotificationDateInterpretation.absoluteTime,
+        androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+      );
+    }
     return;
   }
 

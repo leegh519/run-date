@@ -22,6 +22,13 @@ class CompetitionCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final list = ref.watch(
         homeControllerProvider.select((value) => value.notificationList));
+    final now = DateTime.now().copyWith(
+      hour: 0,
+      minute: 0,
+      second: 0,
+      microsecond: 0,
+      millisecond: 0,
+    );
     return Container(
       padding: EdgeInsets.symmetric(
         vertical: 15.size,
@@ -29,7 +36,7 @@ class CompetitionCard extends ConsumerWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15.size),
-        color: Colors.white,
+        color: now.isAfter(competition.date) ? Colors.grey[200] : Colors.white,
         boxShadow: [
           BoxShadow(
             offset: const Offset(1, 2),
@@ -92,6 +99,9 @@ class CompetitionCard extends ConsumerWidget {
                           fontSize: 18.size,
                           fontWeight: FontWeight.w600,
                           height: 1.2,
+                          color: now.isAfter(competition.date)
+                              ? Colors.grey[700]
+                              : Colors.black,
                         ),
                       ),
                     ),

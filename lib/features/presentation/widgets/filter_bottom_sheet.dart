@@ -65,6 +65,30 @@ class _FilterBottomSheetState extends ConsumerState<FilterBottomSheet> {
                 height: 8.size,
               ),
               Text(
+                '지역 선택',
+                style: TextStyle(
+                  fontSize: 18.size,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              FilterList(
+                filters: Region.values.map((e) => e.name).toList(),
+                selectedFilters: selectedFilters,
+                onTap: (filter) {
+                  if (selectedFilters.region.contains(filter)) {
+                    selectedFilters.region.remove(filter);
+                  } else {
+                    selectedFilters = selectedFilters.copyWith(
+                      region: [...selectedFilters.region, filter],
+                    );
+                  }
+                  setState(() {});
+                },
+              ),
+              SizedBox(
+                height: 8.size,
+              ),
+              Text(
                 '접수',
                 style: TextStyle(
                   fontSize: 18.size,

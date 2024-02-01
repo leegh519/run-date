@@ -19,6 +19,7 @@ mixin _$SelectedFilter {
   List<String> get month => throw _privateConstructorUsedError;
   List<String> get reception => throw _privateConstructorUsedError;
   List<String> get event => throw _privateConstructorUsedError;
+  List<String> get region => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SelectedFilterCopyWith<SelectedFilter> get copyWith =>
@@ -31,7 +32,11 @@ abstract class $SelectedFilterCopyWith<$Res> {
           SelectedFilter value, $Res Function(SelectedFilter) then) =
       _$SelectedFilterCopyWithImpl<$Res, SelectedFilter>;
   @useResult
-  $Res call({List<String> month, List<String> reception, List<String> event});
+  $Res call(
+      {List<String> month,
+      List<String> reception,
+      List<String> event,
+      List<String> region});
 }
 
 /// @nodoc
@@ -50,6 +55,7 @@ class _$SelectedFilterCopyWithImpl<$Res, $Val extends SelectedFilter>
     Object? month = null,
     Object? reception = null,
     Object? event = null,
+    Object? region = null,
   }) {
     return _then(_value.copyWith(
       month: null == month
@@ -64,6 +70,10 @@ class _$SelectedFilterCopyWithImpl<$Res, $Val extends SelectedFilter>
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      region: null == region
+          ? _value.region
+          : region // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -76,7 +86,11 @@ abstract class _$$SelectedFilterImplCopyWith<$Res>
       __$$SelectedFilterImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<String> month, List<String> reception, List<String> event});
+  $Res call(
+      {List<String> month,
+      List<String> reception,
+      List<String> event,
+      List<String> region});
 }
 
 /// @nodoc
@@ -93,6 +107,7 @@ class __$$SelectedFilterImplCopyWithImpl<$Res>
     Object? month = null,
     Object? reception = null,
     Object? event = null,
+    Object? region = null,
   }) {
     return _then(_$SelectedFilterImpl(
       month: null == month
@@ -107,6 +122,10 @@ class __$$SelectedFilterImplCopyWithImpl<$Res>
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      region: null == region
+          ? _value.region
+          : region // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -115,7 +134,10 @@ class __$$SelectedFilterImplCopyWithImpl<$Res>
 
 class _$SelectedFilterImpl extends _SelectedFilter {
   const _$SelectedFilterImpl(
-      {this.month = const [], this.reception = const [], this.event = const []})
+      {this.month = const [],
+      this.reception = const [],
+      this.event = const [],
+      this.region = const []})
       : super._();
 
   @override
@@ -127,10 +149,13 @@ class _$SelectedFilterImpl extends _SelectedFilter {
   @override
   @JsonKey()
   final List<String> event;
+  @override
+  @JsonKey()
+  final List<String> region;
 
   @override
   String toString() {
-    return 'SelectedFilter(month: $month, reception: $reception, event: $event)';
+    return 'SelectedFilter(month: $month, reception: $reception, event: $event, region: $region)';
   }
 
   @override
@@ -140,7 +165,8 @@ class _$SelectedFilterImpl extends _SelectedFilter {
             other is _$SelectedFilterImpl &&
             const DeepCollectionEquality().equals(other.month, month) &&
             const DeepCollectionEquality().equals(other.reception, reception) &&
-            const DeepCollectionEquality().equals(other.event, event));
+            const DeepCollectionEquality().equals(other.event, event) &&
+            const DeepCollectionEquality().equals(other.region, region));
   }
 
   @override
@@ -148,7 +174,8 @@ class _$SelectedFilterImpl extends _SelectedFilter {
       runtimeType,
       const DeepCollectionEquality().hash(month),
       const DeepCollectionEquality().hash(reception),
-      const DeepCollectionEquality().hash(event));
+      const DeepCollectionEquality().hash(event),
+      const DeepCollectionEquality().hash(region));
 
   @JsonKey(ignore: true)
   @override
@@ -162,7 +189,8 @@ abstract class _SelectedFilter extends SelectedFilter {
   const factory _SelectedFilter(
       {final List<String> month,
       final List<String> reception,
-      final List<String> event}) = _$SelectedFilterImpl;
+      final List<String> event,
+      final List<String> region}) = _$SelectedFilterImpl;
   const _SelectedFilter._() : super._();
 
   @override
@@ -171,6 +199,8 @@ abstract class _SelectedFilter extends SelectedFilter {
   List<String> get reception;
   @override
   List<String> get event;
+  @override
+  List<String> get region;
   @override
   @JsonKey(ignore: true)
   _$$SelectedFilterImplCopyWith<_$SelectedFilterImpl> get copyWith =>
