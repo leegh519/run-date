@@ -17,7 +17,6 @@ class CompetitionRepositoryImpl implements CompetitionRepository {
         .from('competitions')
         .select()
         .order('date', ascending: true);
-    print(list);
     return list.map((e) => Competition.fromJson(e)).toList();
   }
 }

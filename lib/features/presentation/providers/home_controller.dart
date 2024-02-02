@@ -1,8 +1,6 @@
 import 'dart:developer';
 
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:rundate/core/configs/firebase/fcm_setting.dart';
 import 'package:rundate/features/domain/entities/competition.dart';
 import 'package:rundate/features/domain/entities/enums/filter.dart';
 import 'package:rundate/features/domain/entities/selected_filter.dart';

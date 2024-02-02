@@ -91,7 +91,7 @@ class CompetitionNotitications {
         tz.TZDateTime.local(
           competition.date.year,
           competition.date.month,
-          competition.date.day - 1,
+          competition.date.day,
           7,
         ),
         // tz.TZDateTime.local(

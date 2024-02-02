@@ -2,7 +2,7 @@ name: rundate
 description: "마라톤 대회 일정 앱"
 publish_to: 'none' 
 
-version: 1.0.0+4
+version: 1.0.2+5
 
 environment:
   sdk: '>=3.2.3 <4.0.0'
