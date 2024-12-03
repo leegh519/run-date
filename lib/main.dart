@@ -31,6 +31,7 @@ Future<void> main() async {
   tz.setLocalLocation(tz.getLocation('Asia/Seoul'));
 
   await Firebase.initializeApp(
+    name: "run_date",
     options: DefaultFirebaseOptions.currentPlatform,
   );
   FcmSetting.initialize();
