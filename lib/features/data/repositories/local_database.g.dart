@@ -112,6 +112,15 @@ class CompetitionNotiData extends DataClass
         id: id ?? this.id,
         competitionId: competitionId ?? this.competitionId,
       );
+  CompetitionNotiData copyWithCompanion(CompetitionNotiCompanion data) {
+    return CompetitionNotiData(
+      id: data.id.present ? data.id.value : this.id,
+      competitionId: data.competitionId.present
+          ? data.competitionId.value
+          : this.competitionId,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('CompetitionNotiData(')
@@ -184,6 +193,7 @@ class CompetitionNotiCompanion extends UpdateCompanion<CompetitionNotiData> {
 
 abstract class _$LocalDatabase extends GeneratedDatabase {
   _$LocalDatabase(QueryExecutor e) : super(e);
+  $LocalDatabaseManager get managers => $LocalDatabaseManager(this);
   late final $CompetitionNotiTable competitionNoti =
       $CompetitionNotiTable(this);
   @override
@@ -191,6 +201,140 @@ abstract class _$LocalDatabase extends GeneratedDatabase {
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities => [competitionNoti];
+}
+
+typedef $$CompetitionNotiTableCreateCompanionBuilder = CompetitionNotiCompanion
+    Function({
+  Value<int> id,
+  required int competitionId,
+});
+typedef $$CompetitionNotiTableUpdateCompanionBuilder = CompetitionNotiCompanion
+    Function({
+  Value<int> id,
+  Value<int> competitionId,
+});
+
+class $$CompetitionNotiTableFilterComposer
+    extends Composer<_$LocalDatabase, $CompetitionNotiTable> {
+  $$CompetitionNotiTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get competitionId => $composableBuilder(
+      column: $table.competitionId, builder: (column) => ColumnFilters(column));
+}
+
+class $$CompetitionNotiTableOrderingComposer
+    extends Composer<_$LocalDatabase, $CompetitionNotiTable> {
+  $$CompetitionNotiTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get competitionId => $composableBuilder(
+      column: $table.competitionId,
+      builder: (column) => ColumnOrderings(column));
+}
+
+class $$CompetitionNotiTableAnnotationComposer
+    extends Composer<_$LocalDatabase, $CompetitionNotiTable> {
+  $$CompetitionNotiTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<int> get competitionId => $composableBuilder(
+      column: $table.competitionId, builder: (column) => column);
+}
+
+class $$CompetitionNotiTableTableManager extends RootTableManager<
+    _$LocalDatabase,
+    $CompetitionNotiTable,
+    CompetitionNotiData,
+    $$CompetitionNotiTableFilterComposer,
+    $$CompetitionNotiTableOrderingComposer,
+    $$CompetitionNotiTableAnnotationComposer,
+    $$CompetitionNotiTableCreateCompanionBuilder,
+    $$CompetitionNotiTableUpdateCompanionBuilder,
+    (
+      CompetitionNotiData,
+      BaseReferences<_$LocalDatabase, $CompetitionNotiTable,
+          CompetitionNotiData>
+    ),
+    CompetitionNotiData,
+    PrefetchHooks Function()> {
+  $$CompetitionNotiTableTableManager(
+      _$LocalDatabase db, $CompetitionNotiTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$CompetitionNotiTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$CompetitionNotiTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$CompetitionNotiTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<int> competitionId = const Value.absent(),
+          }) =>
+              CompetitionNotiCompanion(
+            id: id,
+            competitionId: competitionId,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required int competitionId,
+          }) =>
+              CompetitionNotiCompanion.insert(
+            id: id,
+            competitionId: competitionId,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$CompetitionNotiTableProcessedTableManager = ProcessedTableManager<
+    _$LocalDatabase,
+    $CompetitionNotiTable,
+    CompetitionNotiData,
+    $$CompetitionNotiTableFilterComposer,
+    $$CompetitionNotiTableOrderingComposer,
+    $$CompetitionNotiTableAnnotationComposer,
+    $$CompetitionNotiTableCreateCompanionBuilder,
+    $$CompetitionNotiTableUpdateCompanionBuilder,
+    (
+      CompetitionNotiData,
+      BaseReferences<_$LocalDatabase, $CompetitionNotiTable,
+          CompetitionNotiData>
+    ),
+    CompetitionNotiData,
+    PrefetchHooks Function()>;
+
+class $LocalDatabaseManager {
+  final _$LocalDatabase _db;
+  $LocalDatabaseManager(this._db);
+  $$CompetitionNotiTableTableManager get competitionNoti =>
+      $$CompetitionNotiTableTableManager(_db, _db.competitionNoti);
 }
 
 // **************************************************************************
@@ -211,5 +355,8 @@ final localDatabaseProvider = Provider<LocalDatabase>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef LocalDatabaseRef = ProviderRef<LocalDatabase>;
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

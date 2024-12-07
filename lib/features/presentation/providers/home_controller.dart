@@ -17,6 +17,7 @@ class HomeController extends _$HomeController {
   HomeState build() {
     state = HomeState(
       selectedFilter: SelectedFilter(
+        year: ['${DateTime.now().year}년'],
         month: ['${DateTime.now().month}월'],
       ),
     );
@@ -44,6 +45,7 @@ class HomeController extends _$HomeController {
   }
 
   Future<void> _filterData() async {
+    final year = state.selectedFilter.year;
     final month = state.selectedFilter.month;
     final event = state.selectedFilter.event;
     final region = state.selectedFilter.region;
@@ -51,30 +53,29 @@ class HomeController extends _$HomeController {
     final reception = state.selectedFilter.reception;
     final competitions = [...state.allCompetitions];
 
+    // 년도 필터링
+    if (year.isNotEmpty) {
+      competitions.removeWhere((competition) => !year.contains('${competition.date.year}년'));
+    }
     // 월 필터링
     if (month.isNotEmpty) {
-      competitions.removeWhere(
-          (competition) => !month.contains('${competition.date.month}월'));
+      competitions.removeWhere((competition) => !month.contains('${competition.date.month}월'));
     }
     // 지역 필터링
     if (region.isNotEmpty) {
-      competitions
-          .removeWhere((competition) => !region.contains(competition.region));
+      competitions.removeWhere((competition) => !region.contains(competition.region));
     }
     // 종목 필터링
     if (event.isNotEmpty) {
       competitions.removeWhere((competition) {
-        return competition.eventList
-            .where((element) => event.contains(element))
-            .isEmpty;
+        return competition.eventList.where((element) => event.contains(element)).isEmpty;
       });
     }
     // 접수중 필터링
     if (reception.isNotEmpty) {
       competitions.removeWhere((competition) {
         final progress = DateTime.now().isAfter(competition.startDate) &&
-                DateTime.now()
-                    .isBefore(competition.endDate.add(const Duration(days: 1)))
+                DateTime.now().isBefore(competition.endDate.add(const Duration(days: 1)))
             ? Reception.progress.name
             : Reception.end.name;
 
@@ -94,21 +95,21 @@ class HomeController extends _$HomeController {
   }
 
   void deleteFilter(String filter) {
+    final year = List<String>.from(state.selectedFilter.year)..remove(filter);
     final event = List<String>.from(state.selectedFilter.event)..remove(filter);
     final month = List<String>.from(state.selectedFilter.month)..remove(filter);
-    final region = List<String>.from(state.selectedFilter.region)
-      ..remove(filter);
+    final region = List<String>.from(state.selectedFilter.region)..remove(filter);
     // final notificationOnOff =
     //     List<String>.from(state.selectedFilter.notificationOnOff)
     //       ..remove(filter);
-    final reception = List<String>.from(state.selectedFilter.reception)
-      ..remove(filter);
+    final reception = List<String>.from(state.selectedFilter.reception)..remove(filter);
 
     state = state.copyWith(
       selectedFilter: SelectedFilter(
         event: event,
         month: month,
         region: region,
+        year: year,
         // notificationOnOff: notificationOnOff,
         reception: reception,
       ),

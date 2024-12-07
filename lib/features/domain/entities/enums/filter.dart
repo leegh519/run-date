@@ -1,3 +1,13 @@
+enum Year {
+  y2024('2024년'),
+  y2025('2025년'),
+  ;
+
+  final String name;
+
+  const Year(this.name);
+}
+
 enum Month {
   jan('1월'),
   feb('2월'),

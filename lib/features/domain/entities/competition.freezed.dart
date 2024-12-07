@@ -12,7 +12,7 @@ part of 'competition.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Competition _$CompetitionFromJson(Map<String, dynamic> json) {
   return _Competition.fromJson(json);
@@ -33,8 +33,12 @@ mixin _$Competition {
   String get event => throw _privateConstructorUsedError;
   String get region => throw _privateConstructorUsedError;
 
+  /// Serializes this Competition to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Competition
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CompetitionCopyWith<Competition> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -68,6 +72,8 @@ class _$CompetitionCopyWithImpl<$Res, $Val extends Competition>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Competition
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -156,6 +162,8 @@ class __$$CompetitionImplCopyWithImpl<$Res>
       _$CompetitionImpl _value, $Res Function(_$CompetitionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Competition
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -280,12 +288,14 @@ class _$CompetitionImpl extends _Competition {
             (identical(other.region, region) || other.region == region));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, title, place, date,
       startDate, endDate, url, major, event, region);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Competition
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CompetitionImplCopyWith<_$CompetitionImpl> get copyWith =>
@@ -338,8 +348,11 @@ abstract class _Competition extends Competition {
   String get event;
   @override
   String get region;
+
+  /// Create a copy of Competition
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CompetitionImplCopyWith<_$CompetitionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

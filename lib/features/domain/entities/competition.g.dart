@@ -8,7 +8,7 @@ part of 'competition.dart';
 
 _$CompetitionImpl _$$CompetitionImplFromJson(Map<String, dynamic> json) =>
     _$CompetitionImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       title: json['title'] as String,
       place: json['place'] as String,
       date: DateTime.parse(json['date'] as String),

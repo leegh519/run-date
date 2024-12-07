@@ -41,6 +41,30 @@ class _FilterBottomSheetState extends ConsumerState<FilterBottomSheet> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
+                '년도 선택',
+                style: TextStyle(
+                  fontSize: 18.size,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              FilterList(
+                filters: Year.values.map((e) => e.name).toList(),
+                selectedFilters: selectedFilters,
+                onTap: (filter) {
+                  if (selectedFilters.year.contains(filter)) {
+                    selectedFilters.year.remove(filter);
+                  } else {
+                    selectedFilters = selectedFilters.copyWith(
+                      year: [...selectedFilters.year, filter],
+                    );
+                  }
+                  setState(() {});
+                },
+              ),
+              SizedBox(
+                height: 8.size,
+              ),
+              Text(
                 '월 선택',
                 style: TextStyle(
                   fontSize: 18.size,
@@ -181,9 +205,7 @@ class _FilterBottomSheetState extends ConsumerState<FilterBottomSheet> {
                     child: CustomButton(
                         text: '적용하기',
                         onTap: () {
-                          ref
-                              .read(homeControllerProvider.notifier)
-                              .setFilter(selectedFilters);
+                          ref.read(homeControllerProvider.notifier).setFilter(selectedFilters);
                           context.pop();
                         }),
                   ),

@@ -6,7 +6,7 @@ part of 'home_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$homeControllerHash() => r'55058be77d58396fc0c7cb1835488bf680d3c947';
+String _$homeControllerHash() => r'9c934835856793b5c4134b2178616d3bf47bb8c8';
 
 /// See also [HomeController].
 @ProviderFor(HomeController)
@@ -23,4 +23,4 @@ final homeControllerProvider =
 
 typedef _$HomeController = AutoDisposeNotifier<HomeState>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

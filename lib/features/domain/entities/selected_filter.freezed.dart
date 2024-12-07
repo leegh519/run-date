@@ -12,7 +12,7 @@ part of 'selected_filter.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SelectedFilter {
@@ -20,8 +20,11 @@ mixin _$SelectedFilter {
   List<String> get reception => throw _privateConstructorUsedError;
   List<String> get event => throw _privateConstructorUsedError;
   List<String> get region => throw _privateConstructorUsedError;
+  List<String> get year => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SelectedFilter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SelectedFilterCopyWith<SelectedFilter> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -36,7 +39,8 @@ abstract class $SelectedFilterCopyWith<$Res> {
       {List<String> month,
       List<String> reception,
       List<String> event,
-      List<String> region});
+      List<String> region,
+      List<String> year});
 }
 
 /// @nodoc
@@ -49,6 +53,8 @@ class _$SelectedFilterCopyWithImpl<$Res, $Val extends SelectedFilter>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SelectedFilter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -56,6 +62,7 @@ class _$SelectedFilterCopyWithImpl<$Res, $Val extends SelectedFilter>
     Object? reception = null,
     Object? event = null,
     Object? region = null,
+    Object? year = null,
   }) {
     return _then(_value.copyWith(
       month: null == month
@@ -74,6 +81,10 @@ class _$SelectedFilterCopyWithImpl<$Res, $Val extends SelectedFilter>
           ? _value.region
           : region // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      year: null == year
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -90,7 +101,8 @@ abstract class _$$SelectedFilterImplCopyWith<$Res>
       {List<String> month,
       List<String> reception,
       List<String> event,
-      List<String> region});
+      List<String> region,
+      List<String> year});
 }
 
 /// @nodoc
@@ -101,6 +113,8 @@ class __$$SelectedFilterImplCopyWithImpl<$Res>
       _$SelectedFilterImpl _value, $Res Function(_$SelectedFilterImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SelectedFilter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -108,6 +122,7 @@ class __$$SelectedFilterImplCopyWithImpl<$Res>
     Object? reception = null,
     Object? event = null,
     Object? region = null,
+    Object? year = null,
   }) {
     return _then(_$SelectedFilterImpl(
       month: null == month
@@ -126,6 +141,10 @@ class __$$SelectedFilterImplCopyWithImpl<$Res>
           ? _value.region
           : region // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      year: null == year
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -137,7 +156,8 @@ class _$SelectedFilterImpl extends _SelectedFilter {
       {this.month = const [],
       this.reception = const [],
       this.event = const [],
-      this.region = const []})
+      this.region = const [],
+      this.year = const []})
       : super._();
 
   @override
@@ -152,10 +172,13 @@ class _$SelectedFilterImpl extends _SelectedFilter {
   @override
   @JsonKey()
   final List<String> region;
+  @override
+  @JsonKey()
+  final List<String> year;
 
   @override
   String toString() {
-    return 'SelectedFilter(month: $month, reception: $reception, event: $event, region: $region)';
+    return 'SelectedFilter(month: $month, reception: $reception, event: $event, region: $region, year: $year)';
   }
 
   @override
@@ -166,7 +189,8 @@ class _$SelectedFilterImpl extends _SelectedFilter {
             const DeepCollectionEquality().equals(other.month, month) &&
             const DeepCollectionEquality().equals(other.reception, reception) &&
             const DeepCollectionEquality().equals(other.event, event) &&
-            const DeepCollectionEquality().equals(other.region, region));
+            const DeepCollectionEquality().equals(other.region, region) &&
+            const DeepCollectionEquality().equals(other.year, year));
   }
 
   @override
@@ -175,9 +199,12 @@ class _$SelectedFilterImpl extends _SelectedFilter {
       const DeepCollectionEquality().hash(month),
       const DeepCollectionEquality().hash(reception),
       const DeepCollectionEquality().hash(event),
-      const DeepCollectionEquality().hash(region));
+      const DeepCollectionEquality().hash(region),
+      const DeepCollectionEquality().hash(year));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SelectedFilter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SelectedFilterImplCopyWith<_$SelectedFilterImpl> get copyWith =>
@@ -190,7 +217,8 @@ abstract class _SelectedFilter extends SelectedFilter {
       {final List<String> month,
       final List<String> reception,
       final List<String> event,
-      final List<String> region}) = _$SelectedFilterImpl;
+      final List<String> region,
+      final List<String> year}) = _$SelectedFilterImpl;
   const _SelectedFilter._() : super._();
 
   @override
@@ -202,7 +230,12 @@ abstract class _SelectedFilter extends SelectedFilter {
   @override
   List<String> get region;
   @override
-  @JsonKey(ignore: true)
+  List<String> get year;
+
+  /// Create a copy of SelectedFilter
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SelectedFilterImplCopyWith<_$SelectedFilterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
