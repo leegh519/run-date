@@ -11,7 +11,7 @@ import FirebaseCore
     FirebaseApp.configure()
     GeneratedPluginRegistrant.register(with: self)
 
-    if #available(iOS 12.0, *) { // 이거 버전 맞추기
+    if #available(iOS 13.0, *) { // 이거 버전 맞추기
         UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
     }
     application.registerForRemoteNotifications()
